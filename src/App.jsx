@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import BestBooks from './components/BestBooks';
-import About from './components/About';
+import About from './About';
 import './App.css'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       </header>
 
       <Routes>
-        <Route path='/' element={<BestBooks />} />  {/*} home = BestBooks.jsx */}
+        <Route path='/' element={<BestBooks />} />
         <Route path='/about' element={<About />} />
       </Routes>
     </>

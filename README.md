@@ -25,3 +25,5 @@ If you are developing a production application, we recommend using TypeScript wi
   - created `BestBooks` constructor; `BestBooks.jsx`.
   - created  `About.jsx`; export.
   - updated `main.jsx` to include `BrowserRouter`; allowing `Link`, `Routes`, and `Route` to work correctly.
+  - imported `bootstrap`; `main.jsx`.
+  - replaced starter `App.css` and `index.css` with basic styling (which will no doubt change as we go).  
