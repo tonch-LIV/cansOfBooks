@@ -19,3 +19,9 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - 07.02
   - installed `axios`, `bootstrap`, `react-bootstrap`, and `react-router-dom`.
+- **`bookList` branch**.
+  - create `components` directory <- `BestBooks.jsx`.
+  - imported `react`, `axios`, and `Carousel`; `BestBooks.jsx`.
+  - created `BestBooks` constructor; `BestBooks.jsx`.
+  - created  `About.jsx`; export.
+  - updated `main.jsx` to include `BrowserRouter`; allowing `Link`, `Routes`, and `Route` to work correctly.
