@@ -16,7 +16,7 @@ class BestBooks extends React.Component {
   }
 
   async getBooks() { // asks backend for books
-    const response = await axios.get('http://localhost:3001/books');
+    const response = await axios.get(`${import.meta.env.VITE_SERVER}/books`);
     this.setState({ // stores books in state
       books: response.data,
     });
