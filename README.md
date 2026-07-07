@@ -30,3 +30,7 @@ If you are developing a production application, we recommend using TypeScript wi
   - created `VITE_SERVER` variable for URL; `.env`.
     - imported; `BestBooks.jsx`.
     - updated `const response`.
+    - expand component state in constructor; `BestBooks.jsx`.
+    - created methods; `showBookForm` and `hideBookForm` to later connect to 'add book' button and modal 'close' button; `BestBooks.jsx`.
+    - strengthen `getBooks();` with `try... catch`; `BestBooks.jsx`.
+    - added two guard clause in `render` statement;`BestBooks.jsx`.

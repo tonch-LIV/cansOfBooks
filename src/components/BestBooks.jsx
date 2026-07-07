@@ -6,23 +6,67 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
+      books: [], // app data
+      showModal: false,  // UI state
+      loading: true,  // request state
+      error: null,  // error state
     };
   }
 
   componentDidMount() {
     this.getBooks();  // GET request to `/books`; `componentDidMount`
-
   }
 
-  async getBooks() { // asks backend for books
-    const response = await axios.get(`${import.meta.env.VITE_SERVER}/books`);
-    this.setState({ // stores books in state
-      books: response.data,
+  showBookForm = () => {
+    this.setState({
+      showModal: true,
     });
+  };
+
+  hideBookForm = () => {
+    this.setState({
+      showModal: false,
+    });
+  };
+
+  async getBooks() { // asks backend for books
+    try{
+      const response = await axios.get(`${import.meta.env.VITE_SERVER}/books`);
+      this.setState({ // stores books in state
+        books: response.data,
+        loading: false,
+        error: null,
+      });
+
+    } catch (error) {
+
+      console.error(error);
+
+      this.setState({
+        loading: false,
+        error: error.message,
+      });
+    }
   }
 
   render() {
+    if (this.state.loading) { // guard clause for loading 
+      return (
+        <main className="page">
+          <h1>Best Books</h1>
+          <p>Loading books...</p>
+        </main>
+      );
+    }
+
+    if (this.state.error) { // guard clause for error to load
+      return (
+        <main className="page">
+          <h1>Best Books</h1>
+          <p>Error: {this.state.error}</p>
+        </main>
+      );
+    }
     return (
       <main className="page">
         <h1>Best Books</h1>
