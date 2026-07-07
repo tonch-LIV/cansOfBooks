@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
+import AddBookButton from './AddBookButton';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class BestBooks extends React.Component {
   }
 
   showBookForm = () => {
+    console.log('Add Book Button clicked!')
     this.setState({
       showModal: true,
     });
@@ -70,6 +72,7 @@ class BestBooks extends React.Component {
     return (
       <main className="page">
         <h1>Best Books</h1>
+        <AddBookButton showBookForm={this.showBookForm} />
 
         {this.state.books.length > 0 ? ( // conditional to only render when more than 0 books : message
           <Carousel>

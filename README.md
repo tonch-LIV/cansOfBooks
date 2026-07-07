@@ -34,3 +34,6 @@ If you are developing a production application, we recommend using TypeScript wi
     - created methods; `showBookForm` and `hideBookForm` to later connect to 'add book' button and modal 'close' button; `BestBooks.jsx`.
     - strengthen `getBooks();` with `try... catch`; `BestBooks.jsx`.
     - added two guard clause in `render` statement;`BestBooks.jsx`.
+    - created `AddBookButton.jsx`.
+    - imported `Button` and created simple function; `AddBookButton.jsx`.
+    - imported `AddBookButton.jsx` into `BestBooks.jsx`, rendered it in return statement.
