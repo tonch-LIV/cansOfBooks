@@ -38,3 +38,5 @@ If you are developing a production application, we recommend using TypeScript wi
     - imported `Button` and created simple function; `AddBookButton.jsx`.
     - imported `AddBookButton.jsx` into `BestBooks.jsx`, rendered it in return statement.
     - created `BookFormModal.jsx` (with placeholder text) to either define show, hide, or close behavior; exported -> `BestBooks.jsx`.
+    - started building the `Form` UI aspects, replacing placeholder; `BookFormModal.jsx`.
+    - 
