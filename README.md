@@ -39,4 +39,8 @@ If you are developing a production application, we recommend using TypeScript wi
     - imported `AddBookButton.jsx` into `BestBooks.jsx`, rendered it in return statement.
     - created `BookFormModal.jsx` (with placeholder text) to either define show, hide, or close behavior; exported -> `BestBooks.jsx`.
     - started building the `Form` UI aspects, replacing placeholder; `BookFormModal.jsx`.
-    - 
+    - imported `useState` and created `handleChange();`; `BookFormModal.jsx`.
+    - connected the inputs and changes of Title, Description, and Status to `handleChange`, plus adding `name` attributes; `BookFormModal.jsx`.
+    - imported `axios` and created submit handler `handleSubmit();`, and tied it to `<Form>`; `BookFormHandler.jsx`.
+    - *troubleshooting*; 404 error and console.log failure.
+    - still debugging
