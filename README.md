@@ -44,4 +44,7 @@ If you are developing a production application, we recommend using TypeScript wi
     - imported `axios` and created submit handler `handleSubmit();`, and tied it to `<Form>`; `BookFormHandler.jsx`.
     - *troubleshooting*; 404 error and console.log failure.
     - still debugging
-    - **If MongoDB Atlas reports self-signed certificate in certificate chain; check network first. The cause may be TLS inspection by the organization's network infrastructure rather than a problem with the application.**
+    - **If MongoDB Atlas reports `self-signed certificate in certificate chain`; check network first. The cause may be TLS inspection by the organization's network infrastructure rather than a problem with the application.**
+  - 07.12
+    - created `handleAddBook()` to update on new books added; `BestBooks.jsx` | pass into `<BookFormModal />` under return statement.
+    - After server returns newly created book, `BookFormModal.jsx` notifies parent through `props.handleAddBook(response.data);` and hands over the object to `BestBooks.jsx`.

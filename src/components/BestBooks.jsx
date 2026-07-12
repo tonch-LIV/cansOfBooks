@@ -31,6 +31,14 @@ class BestBooks extends React.Component {
     });
   };
 
+  handleAddBook = (newBook) => {
+    this.setState((prevState) => ({
+      books: [...prevState.books, newBook],
+      showModal: false,
+    }));
+    console.log('BestBooks received:', newBook);
+  };
+
   async getBooks() { // asks backend for books
     try{
       const response = await axios.get(`${import.meta.env.VITE_SERVER}/books`);
@@ -79,6 +87,7 @@ class BestBooks extends React.Component {
         <BookFormModal
           showModal={this.state.showModal}
           hideBookForm={this.hideBookForm}
+          handleAddBook={this.handleAddBook}
         />
 
         {this.state.books.length > 0 ? ( // conditional to only render when more than 0 books : message

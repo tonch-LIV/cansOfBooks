@@ -38,6 +38,7 @@ function BookFormModal(props) {
       );
 
       console.log(response.data);
+      props.handleAddBook(response.data);
     } catch (error) {
       console.error(error);
 
