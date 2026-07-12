@@ -44,3 +44,4 @@ If you are developing a production application, we recommend using TypeScript wi
     - imported `axios` and created submit handler `handleSubmit();`, and tied it to `<Form>`; `BookFormHandler.jsx`.
     - *troubleshooting*; 404 error and console.log failure.
     - still debugging
+    - **If MongoDB Atlas reports self-signed certificate in certificate chain; check network first. The cause may be TLS inspection by the organization's network infrastructure rather than a problem with the application.**
