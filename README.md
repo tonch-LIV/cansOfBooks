@@ -48,3 +48,5 @@ If you are developing a production application, we recommend using TypeScript wi
   - 07.12
     - created `handleAddBook()` to update on new books added; `BestBooks.jsx` | pass into `<BookFormModal />` under return statement.
     - After server returns newly created book, `BookFormModal.jsx` notifies parent through `props.handleAddBook(response.data);` and hands over the object to `BestBooks.jsx`.
+    - created `handleDeleteBook();` with intention to refactor later into its own componenet alngside carousel; `BestBooks.jsx`.
+    - imported and added `<Button />` inside of `<Carousel />` -> retrun statement; `BestBooks.jsx`.

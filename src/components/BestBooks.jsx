@@ -1,8 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+
 import Carousel from 'react-bootstrap/Carousel';
+// import Button from 'react-bootstrap/Button';
+
 import AddBookButton from './AddBookButton';
 import BookFormModal from './BookFormModal';
+import { Button } from 'react-bootstrap';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -37,6 +41,19 @@ class BestBooks extends React.Component {
       showModal: false,
     }));
     console.log('BestBooks received:', newBook);
+  };
+
+  handleDeleteBook = async (id) => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_SERVER}/books/${id}`);
+
+      this.setState((prevState) => ({
+        books: prevState.books.filter((book) => book._id !== id),
+      }));
+    
+    } catch (error) {
+      console.error('Error deleting book:', error);
+    }
   };
 
   async getBooks() { // asks backend for books
@@ -98,6 +115,13 @@ class BestBooks extends React.Component {
                   <h2>{book.title}</h2>
                   <p>{book.description}</p>
                   <p className="book-status">{book.status}</p>
+
+                  <Button
+                    variant='danger' 
+                    onClick={() => this.handleDeleteBook(book._id)}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </Carousel.Item>
             ))}
