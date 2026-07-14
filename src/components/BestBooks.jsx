@@ -13,25 +13,41 @@ class BestBooks extends React.Component {
     super(props);
     this.state = {
       books: [], // app data
-      showModal: false,  // UI state
+      showAddModal: false,  // UI state
+      showEditModal: false,
+      selectedBook: null,  // 
       loading: true,  // request state
       error: null,  // error state
     };
-  }
+  };
 
   componentDidMount() {
     this.getBooks();  // GET request to `/books`; `componentDidMount`
-  }
+  };
 
   showBookForm = () => {
     this.setState({
-      showModal: true,
+      showAddModal: true,
     });
   };
 
   hideBookForm = () => {
     this.setState({
-      showModal: false,
+      showAddModal: false,
+    });
+  };
+
+  showEditForm = (book) => {
+    this.setState({
+      showEditModal: true,
+      selectedBook: book,
+    });
+  };
+
+  hideEditForm = () => {
+    this.setState({
+      showEditModal: false,
+      selectedBook: null,
     });
   };
 
@@ -74,7 +90,7 @@ class BestBooks extends React.Component {
         error: error.message,
       });
     }
-  }
+  };
 
   render() {    
     if (this.state.loading) { // guard clause for loading 
@@ -84,7 +100,7 @@ class BestBooks extends React.Component {
           <p>Loading books...</p>
         </main>
       );
-    }
+    };
 
     if (this.state.error) { // guard clause for error to load
       return (
@@ -93,7 +109,8 @@ class BestBooks extends React.Component {
           <p>Error: {this.state.error}</p>
         </main>
       );
-    }
+    };
+
     return (
       <main className="page">
         <h1>Best Books</h1>

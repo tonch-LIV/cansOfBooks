@@ -51,4 +51,7 @@ If you are developing a production application, we recommend using TypeScript wi
     - created `handleDeleteBook();` with intention to refactor later into its own componenet alngside carousel; `BestBooks.jsx`.
     - imported and added `<Button />` inside of `<Carousel />` -> retrun statement; `BestBooks.jsx`.
     - updated `MONGODB` connection string with new password; `.env`.
+    - created `showEditForm();`; `BestBooks.jsx`.
+    - updated state for modal showing; `showModal` -> `showAddModal` and `showEditModal`; as well as the methods that use it accordingly; `BestBooks.jsx`.
+    - created `hideEditForm();` that resets `selectedBook` once modal is closed; `BestBooks.jsx`.
     - 
