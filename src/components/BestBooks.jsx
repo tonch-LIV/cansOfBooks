@@ -76,9 +76,7 @@ class BestBooks extends React.Component {
     }
   }
 
-  render() {
-    console.log("SERVER:", import.meta.env.VITE_SERVER);
-    
+  render() {    
     if (this.state.loading) { // guard clause for loading 
       return (
         <main className="page">
