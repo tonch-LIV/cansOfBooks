@@ -51,7 +51,7 @@ class BestBooks extends React.Component {
     });
   };
 
-  handleAddBook = (newBook) => {
+  handleAddBook = (newBook) => {  // POST / Create
     this.setState((prevState) => ({
       books: [...prevState.books, newBook],
       showAddModal: false,
@@ -59,12 +59,24 @@ class BestBooks extends React.Component {
     console.log('BestBooks received:', newBook);
   };
 
-  handleDeleteBook = async (id) => {
+  handleUpdateBook = (updatedBook) => {  // PUT/PATCH / Update
+    this.setState((prevState) => ({
+      books: prevState.books.map((book) =>  // looks through the previous state and if changed, updates
+        book._id === updatedBook._id
+          ? updatedBook
+          : book
+        ),
+        showEditModal: false,
+        selectedBook: null,
+    }));
+  };
+
+  handleDeleteBook = async (id) => {  // DELETE / ''
     try {
       await axios.delete(`${import.meta.env.VITE_SERVER}/books/${id}`);
 
       this.setState((prevState) => ({
-        books: prevState.books.filter((book) => book._id !== id),
+        books: prevState.books.filter((book) => book._id !== id),  // looks at previous state and deletes the one thats been selected
       }));
     
     } catch (error) {
@@ -126,6 +138,7 @@ class BestBooks extends React.Component {
           showModal={this.state.showEditModal}
           hideEditForm={this.hideEditForm}
           selectedBook={this.state.selectedBook}
+          handleUpdateBook={this.handleUpdateBook}
         />
 
         {this.state.books.length > 0 ? ( // conditional to only render when more than 0 books : message

@@ -57,3 +57,7 @@ If you are developing a production application, we recommend using TypeScript wi
     - added second `<Button>` for editing; `BestBooks.jsx`.
     - created `EditBookModal();` -> `EditBookModal.jsx`; imported into `BestBooks,jsx` to render.
     - created `handleChange();`, `<Modal>` (<- `<Form>`) in return statement; `EditBookModal.jsx`.
+    - created `handleSubmit();`; `EditBookModal.jsx`.
+    - updated `<Form>` with `onSubmit={handleSubmit}`; `EditBookModal.jsx`.
+    - added `<Button>` 'Save Changes'; `EditBookModal.jsx`.
+    - created `handleUpdateBook` and passed it as props into `<EditBookModal/>`; `BestBooks.jsx`.

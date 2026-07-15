@@ -32,6 +32,22 @@ function EditBookModal(props) {
     });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_SERVER}/books/${props.selectedBook._id}`,  // 
+        formData
+      );
+
+      props.handleUpdateBook(response.data);
+
+    } catch (error) {
+      console.error("Error updating book:", error);
+    }
+  };
+
   return(
     <Modal
       show={props.showModal}  // props passed down from `BestBooks` for `showEditModal`
@@ -42,45 +58,53 @@ function EditBookModal(props) {
       </Modal.Header>
 
       <Modal.Body>
-        <Form.Group className="mb-3">
-          <Form.Label>Title</Form.Label>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label>Title</Form.Label>
 
-          <Form.Control
-            id="title"  // required task
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-          />
-        </Form.Group>
+            <Form.Control
+              id="title"  // required task
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Description</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label>Description</Form.Label>
 
-          <Form.Control
-            as="textarea"
-            rows={3}
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </Form.Group>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Status</Form.Label>
+          <Form.Group className="mb-3">
+            <Form.Label>Status</Form.Label>
 
-          <Form.Select
-            name="status"
-            value={formData.status}
-            onChange={handleChange}
+            <Form.Select
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+            >
+              <option>Currently Reading</option>
+              <option>Finished</option>
+              <option>Want to Read</option>
+            </Form.Select>
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="submit"
           >
-            <option>Currently Reading</option>
-            <option>Finished</option>
-            <option>Want to Read</option>
-          </Form.Select>
-        </Form.Group>
+            Save Changes
+          </Button>
+        </Form>
       </Modal.Body>
-
+  
       <Modal.Footer>
         <Button
           variant="secondary"
