@@ -2,11 +2,11 @@ import React from 'react';
 import axios from 'axios';
 
 import Carousel from 'react-bootstrap/Carousel';
-// import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 
 import AddBookButton from './AddBookButton';
 import BookFormModal from './BookFormModal';
-import { Button } from 'react-bootstrap';
+import EditBookModal from './EditBookModal';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class BestBooks extends React.Component {
   handleAddBook = (newBook) => {
     this.setState((prevState) => ({
       books: [...prevState.books, newBook],
-      showModal: false,
+      showAddModal: false,
     }));
     console.log('BestBooks received:', newBook);
   };
@@ -117,9 +117,15 @@ class BestBooks extends React.Component {
         <AddBookButton showBookForm={this.showBookForm} />
 
         <BookFormModal
-          showModal={this.state.showModal}
+          showModal={this.state.showAddModal}
           hideBookForm={this.hideBookForm}
           handleAddBook={this.handleAddBook}
+        />
+
+        <EditBookModal
+          showModal={this.state.showEditModal}
+          hideEditForm={this.hideEditForm}
+          selectedBook={this.state.selectedBook}
         />
 
         {this.state.books.length > 0 ? ( // conditional to only render when more than 0 books : message
@@ -132,7 +138,13 @@ class BestBooks extends React.Component {
                   <p className="book-status">{book.status}</p>
 
                   <Button
-                    variant='danger' 
+                    variant="secondary"
+                    onClick={() => this.showEditForm(book)}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="danger" 
                     onClick={() => this.handleDeleteBook(book._id)}
                   >
                     Delete
