@@ -61,3 +61,9 @@ If you are developing a production application, we recommend using TypeScript wi
     - updated `<Form>` with `onSubmit={handleSubmit}`; `EditBookModal.jsx`.
     - added `<Button>` 'Save Changes'; `EditBookModal.jsx`.
     - created `handleUpdateBook` and passed it as props into `<EditBookModal/>`; `BestBooks.jsx`.
+- **`rization` branch created.**
+  - 07.16
+    - installed `auth0/auth0-react@2.x`; *
+    - created `VITE_AUTH0_DOMAIN` and `VITE_AUTH0_CLIENT_ID` variables; `env`.
+    - imported `Auth0Provider`, wrapped `<BrowserRouter>` inside `<Auth0Provider>`; `main.jsx`.
+    - created `/Auth` sub-directory with files, `AuthButtons.jsx`, `Login.jsx`, and `Logout.jsx` from provided starter; `/src`.
