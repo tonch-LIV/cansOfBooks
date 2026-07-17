@@ -67,3 +67,8 @@ If you are developing a production application, we recommend using TypeScript wi
     - created `VITE_AUTH0_DOMAIN` and `VITE_AUTH0_CLIENT_ID` variables; `env`.
     - imported `Auth0Provider`, wrapped `<BrowserRouter>` inside `<Auth0Provider>`; `main.jsx`.
     - created `/Auth` sub-directory with files, `AuthButtons.jsx`, `Login.jsx`, and `Logout.jsx` from provided starter; `/src`.
+    - created `Welcome.jsx`.
+    - imported `useAuth0`, `AuthButtons`, `Welcome`; `App.jsx`.
+    - created `isAuthenticated`; `App.jsx`.
+    - added `<AuthButtons />`; `<nav>`; `App.jsx`.
+    - updated home route `/` to include conditional rendering based on whether logged on or not; `App.jsx`.
