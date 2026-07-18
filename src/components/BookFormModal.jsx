@@ -32,9 +32,16 @@ function BookFormModal(props) {
     console.log(formData);
     console.log(import.meta.env.VITE_SERVER);
     try {
+      const token = await props.getAccessTokenSilently();
+
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER}/books`, 
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       console.log(response.data);

@@ -36,9 +36,16 @@ function EditBookModal(props) {
     event.preventDefault();
 
     try {
+      const token = await props.getAccessTokenSilently();
+
       const response = await axios.put(
         `${import.meta.env.VITE_SERVER}/books/${props.selectedBook._id}`,  // 
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       props.handleUpdateBook(response.data);
