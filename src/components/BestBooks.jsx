@@ -73,7 +73,13 @@ class BestBooks extends React.Component {
 
   handleDeleteBook = async (id) => {  // DELETE / ''
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER}/books/${id}`);
+      const token = await this.props.getAccessTokenSilently();
+
+      await axios.delete(`${import.meta.env.VITE_SERVER}/books/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       this.setState((prevState) => ({
         books: prevState.books.filter((book) => book._id !== id),  // looks at previous state and deletes the one thats been selected
@@ -86,7 +92,14 @@ class BestBooks extends React.Component {
 
   async getBooks() { // asks backend for books
     try{
-      const response = await axios.get(`${import.meta.env.VITE_SERVER}/books`);
+      const token = await this.props.getAccessTokenSilently();
+
+      const response = await axios.get(`${import.meta.env.VITE_SERVER}/books`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       this.setState({ // stores books in state
         books: response.data,
         loading: false,
@@ -132,6 +145,7 @@ class BestBooks extends React.Component {
           showModal={this.state.showAddModal}
           hideBookForm={this.hideBookForm}
           handleAddBook={this.handleAddBook}
+          getAccessTokenSilently={this.props.getAccessTokenSilently}
         />
 
         <EditBookModal
@@ -139,6 +153,7 @@ class BestBooks extends React.Component {
           hideEditForm={this.hideEditForm}
           selectedBook={this.state.selectedBook}
           handleUpdateBook={this.handleUpdateBook}
+          getAccessTokenSilently={this.props.getAccessTokenSilently}
         />
 
         {this.state.books.length > 0 ? ( // conditional to only render when more than 0 books : message

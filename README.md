@@ -61,3 +61,22 @@ If you are developing a production application, we recommend using TypeScript wi
     - updated `<Form>` with `onSubmit={handleSubmit}`; `EditBookModal.jsx`.
     - added `<Button>` 'Save Changes'; `EditBookModal.jsx`.
     - created `handleUpdateBook` and passed it as props into `<EditBookModal/>`; `BestBooks.jsx`.
+- **`rization` branch created.**
+  - 07.16
+    - installed `auth0/auth0-react@2.x`; *
+    - created `VITE_AUTH0_DOMAIN` and `VITE_AUTH0_CLIENT_ID` variables; `env`.
+    - imported `Auth0Provider`, wrapped `<BrowserRouter>` inside `<Auth0Provider>`; `main.jsx`.
+    - created `/Auth` sub-directory with files, `AuthButtons.jsx`, `Login.jsx`, and `Logout.jsx` from provided starter; `/src`.
+    - created `Welcome.jsx`.
+    - imported `useAuth0`, `AuthButtons`, `Welcome`; `App.jsx`.
+    - created `isAuthenticated`; `App.jsx`.
+    - added `<AuthButtons />`; `<nav>`; `App.jsx`.
+    - updated home route `/` to include conditional rendering based on whether logged on or not; `App.jsx`.
+    - created `Profile.jsx`; `~/src/components/`.
+    - imported `Profile.jsx`and added (authenticated) link in `<nav>` as well as actual `/profile` route with conditional rendering dependent on authentication; `App.jsx`.
+    - Passed token function `getAccessTokenSilently` to `<BestBooks />` as props; `App.jsx`.
+    - updated `getBooks();` and `handleDeleteBook();` with `token` to validate request when asking for / deleting books from backend.
+    - passed `getAccessTokenSilently` as props to `<BookFormModal />` and `<EditBookModal />` since Auth0 is coming from higher up; the path is `App.jsx` -> `BestBooks.jsx` -> `BookFormModal.jsx` / `EditBookModal.jsx`; `BestBooks.jsx`.
+    - updated `handleSubmit();` to include `token`, and a config obj as a third argument to the axios request.
+    - updated the `PUT /books/:id` request in `handleSubmit();` as well to include `token` and third argument to axios request.
+    
